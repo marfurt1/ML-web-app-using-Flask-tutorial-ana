@@ -2,13 +2,26 @@ import pickle
 import pandas as pd
 import numpy as np
 
-country = 'Columbia'
+'''
+## Para resultado Yes
+country = 'Colombia'
 variety = 'Caturra'
 aroma = 7.83
 aftertaste = 7.67
 acidity = 7.33
 body = 7.67
 balance = 7.67
+moisture = 0.11
+'''
+
+## Para resultado No
+country = 'Other'
+variety = 'Other'
+aroma = 7.25
+aftertaste = 6.83
+acidity = 7.17
+body = 7.00
+balance = 7.17
 moisture = 0.11
 
 # datos para probar el modelo

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to my coffee specialty prediction app {% endblock %}</h1>
 
     <form method = "post">
         SELECT COUNTRY
@@ -61,5 +60,7 @@
         <br>
         <button type="submit">PREDICT</button>
     </form>
+    
+    <h1> {{ prediction }}</h1>
 
 {% endblock %}
