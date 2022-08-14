@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>ML app</title>
+</head>
+<body>
+   {% extends 'base.html' %}
+   {% block content %}
+       <h1>{% block title %} Welcome to my coffee specialty prediction app {% endblock %}</h1>
+   {% endblock %}
+</body>
+</html>
+
