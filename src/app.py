@@ -23,20 +23,25 @@ def ValuePredictor(to_predict_list):
     return result.tolist()[0]
 
 
-@app.route('/result/', methods = ('GET', 'POST'))
+@app.route('/result/', methods = ['POST'])
 def result():
-    if request.method == 'POST':
-        to_predict_list = request.form.to_dict()
-        to_predict_list=list(to_predict_list.values())
-        #to_predict_list = list(map(int, to_predict_list))
-        result = ValuePredictor(to_predict_list)
-        
-        if result == 'Yes':
-            prediction = jsonify(message = 'Yes it is a specialty coffee')
-        else:
-            prediction = jsonify(message = 'It is not a specialty coffee')
-            
-        return render_template("result.html", prediction)
+    #print(request.form.values())
+    #to_predict_list = request.form.values.to_dict()
+    #to_predict_list=list(to_predict_list.values())
+    #to_predict_list = list(map(int, to_predict_list))
+    to_predict_list = [x for x in request.form.values()]
+    print(to_predict_list)
+    result = ValuePredictor(to_predict_list)
+    print(result)
+
+    if result == 'Yes':
+        #prediction = jsonify(message = 'Yes it is a specialty coffee')
+        prediction = 'Yes it is a specialty coffee'
+    else:
+        #prediction = jsonify(message = 'It is not a specialty coffee')
+        prediction = 'It is not a specialty coffee'
+    print(prediction)       
+    return render_template("index.html", prediction)
 
 #@app.route('/<string:country>/<string:variety>/<float:aroma>/<float:aftertaste>/<float:acidity>/<float:body>/<float:balance>/<float:moisture>')
 #def result(country, variety, aroma, aftertaste, acidity, body, balance, moisture):

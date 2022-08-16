@@ -3,63 +3,71 @@
 {% block content %}
     <h1>{% block title %} Welcome to my coffee specialty prediction app {% endblock %}</h1>
 
-    <form method = "post">
-        SELECT COUNTRY
-        <label for="country_of_origin"></label>
-        <select name="country" id="country">
-            <option value="{{ request.form['country_of_origin'] }}">Brazil</option>
-            <option value="{{ request.form['country_of_origin'] }}">Colombia</option>
-            <option value="{{ request.form['country_of_origin'] }}">Guatemala</option>
-            <option value="{{ request.form['country_of_origin'] }}">Mexico</option>
-            <option value="{{ request.form['country_of_origin'] }}">Taiwan</option>
-            <option value="{{ request.form['country_of_origin'] }}">Other</option>
-        </select>
+    <div id="registration-form">
+        <div class='fieldset'>  
+            <form action="{{ url_for('result')}}" method = "post">
+                SELECT COUNTRY
+                <label for="country_of_origin"></label>
+                <select name="country" id="country">
+                    <option value="Brazil">Brazil</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br>
+                <br>
+                SELECT VARIETY
+                <input type="radio" name="variety" id="Bourbon" value="Bourbon">
+                <label for="Bourbon">Bourbon</label>
+                <input type="radio" name="variety" id="Catuai" value= "Catuai">
+                <label for="Catuai">Catuai</label>
+                <input type="radio" name="variety" id="Caturra" value= "Caturra">
+                <label for="Caturra">Caturra</label>
+                <input type="radio" name="variety" id="Typica" value= "Typica">
+                <label for="Typica">Typica</label>
+                <input type="radio" name="variety" id="Other" value= "Other">
+                <label for="Other">Other</label>
+                <br>
+                <br>
+                SELECT AROMA
+                <input type="number" step = "any" name = "aroma" id="aroma" value= "{{ request.form['aroma'] }}">
+                <label for="aroma"></label>
+                <br>
+                <br>
+                SELECT AFTERTASTE
+                <input type="number" step = "any" name = "aftertaste" id="aftertaste" value= "{{ request.form['aftertaste'] }}">
+                <label for="aftertaste"></label>
+                <br>
+                <br>
+                SELECT ACIDITY
+                <input type="number" step = "any" name = "acidity" id="acidity" value= "{{ request.form['acidity'] }}">
+                <label for="acidity"></label>
+                <br>
+                <br>
+                SELECT BODY
+                <input type="number" step = "any" name = "body" id="body" value= "{{ request.form['body'] }}">
+                <label for="body"></label>
+                <br>
+                <br>
+                SELECT BALANCE
+                <input type="number" step = "any" name = "balance" id="balance" value= "{{ request.form['balance'] }}">
+                <label for="balance"></label>
+                <br>
+                <br>
+                SELECT MOISTURE
+                <input type="number" step = "any" name = "moisture" id="moisture" value= "{{ request.form['moisture'] }}">
+                <label for="moisture"></label>
+                <br>
+                <br>
+                <input type="submit" value = "PREDICT">
+            </form>
         <br>
         <br>
-        SELECT VARIETY
-        <input type="radio" name="variety" id="Bourbon">
-        <label for="Bourbon">Bourbon</label>
-        <input type="radio" name="variety" id="Catuai" value= "{{ request.form['variety'] }}">
-        <label for="Catuai">Catuai</label>
-        <input type="radio" name="variety" id="Caturra" value= "{{ request.form['variety'] }}">
-        <label for="Caturra">Caturra</label>
-        <input type="radio" name="variety" id="Typica" value= "{{ request.form['variety'] }}">
-        <label for="Typica">Typica</label>
-        <input type="radio" name="variety" id="Other" value= "{{ request.form['variety'] }}">
-        <label for="Other">Other</label>
-        <br>
-        <br>
-        SELECT AROMA
-        <input type="number" step = "any" name = "aroma" id="aroma" value= "{{ request.form['aroma'] }}">
-        <label for="aroma"></label>
-        <br>
-        <br>
-        SELECT AFTER TASTE
-        <input type="number" step = "any" name = "aftertaste" id="aftertaste" value= "{{ request.form['aftertaste'] }}">
-        <label for="aftertaste"></label>
-        <br>
-        <br>
-        SELECT ACIDITY
-        <input type="number" step = "any" name = "acidity" id="acidity" value= "{{ request.form['acidity'] }}">
-        <label for="acidity"></label>
-        <br>
-        <br>
-        SELECT BODY
-        <input type="number" step = "any" name = "body" id="body" value= "{{ request.form['body'] }}">
-        <label for="body"></label>
-        <br>
-        <br>
-        SELECT BALANCE
-        <input type="number" step = "any" name = "balance" id="balance" value= "{{ request.form['balance'] }}">
-        <label for="balance"></label>
-        <br>
-        <br>
-        SELECT MOISTURE
-        <input type="number" step = "any" name = "moisture" id="moisture" value= "{{ request.form['moisture'] }}">
-        <label for="moisture"></label>
-        <br>
-        <br>
-        <button type="submit">PREDICT</button>
-    </form>
+
+        {{ prediction }}
+    </div>
+</div>
 
 {% endblock %}
